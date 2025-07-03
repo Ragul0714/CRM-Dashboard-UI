@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="dashboard-wrapper">
+        <button class="sidebar-toggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <aside class="sidebar">
+            <div class="profile-section">
+                <img src="profile.png" alt="User Profile" class="profile-pic">
+                <h3>Team 1</h3>
+                <p>System Administrator</p>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#dashboard" data-section="dashboard" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="#leads" data-section="leads"><i class="fas fa-users"></i> Leads</a></li>
+                    <li><a href="#tasks" data-section="tasks"><i class="fas fa-tasks"></i> Tasks</a></li>
+                    <li><a href="#calendar" data-section="calendar"><i class="fas fa-calendar-alt"></i> Calendar</a></li>
+                    <li><a href="#reports" data-section="reports"><i class="fas fa-chart-line"></i> Reports</a></li>
+                    <li><a href="#settings" data-section="settings"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1>CRM Overview</h1>
+                <div class="header-actions">
+                    <input type="text" placeholder="Search anything..." class="header-search">
+                    <i class="fas fa-bell header-icon"></i>
+                    <i class="fas fa-user-circle header-icon"></i>
+                </div>
+            </header>
+
+            <section id="dashboard" class="dashboard-section active-section">
+                <section class="dashboard-cards">
+                    </section>
+
+                <div class="dashboard-grid-bottom">
+                    <div class="card recent-activities-card">
+                        <h2><i class="fas fa-history"></i> Recent Activities</h2>
+                        <ul class="activity-feed">
+                            <li><span class="activity-type new">New Lead:</span> **Michael Chen** from Website. <span class="activity-time">5 mins ago</span></li>
+                            <li><span class="activity-type deal">Deal Closed:</span> **Acme Corp** - $15,000. <span class="activity-time">30 mins ago</span></li>
+                            <li><span class="activity-type task">Task Updated:</span> **Follow-up with Jane Smith** to In Progress. <span class="activity-time">1 hour ago</span></li>
+                            <li><span class="activity-type call">Call Logged:</span> **David Lee** - Discussed pricing. <span class="activity-time">2 hours ago</span></li>
+                            <li><span class="activity-type lead">Lead Qualified:</span> **Sarah Johnson**. <span class="activity-time">Yesterday</span></li>
+                        </ul>
+                        <button class="action-btn secondary-btn view-all-btn">View All Activities</button>
+                    </div>
+
+                    <div class="card sales-pipeline-card">
+                        <h2><i class="fas fa-funnel-dollar"></i> Sales Pipeline Overview</h2>
+                        <div class="pipeline-stages">
+                            <div class="pipeline-stage">
+                                <span class="stage-name">New Leads</span>
+                                <span class="stage-value">35</span>
+                                <div class="stage-bar" style="width: 70%; background-color: var(--primary-color);"></div>
+                            </div>
+                            <div class="pipeline-stage">
+                                <span class="stage-name">Contacted</span>
+                                <span class="stage-value">20</span>
+                                <div class="stage-bar" style="width: 40%; background-color: var(--warning-color);"></div>
+                            </div>
+                            <div class="pipeline-stage">
+                                <span class="stage-name">Qualified</span>
+                                <span class="stage-value">12</span>
+                                <div class="stage-bar" style="width: 24%; background-color: var(--accent-color);"></div>
+                            </div>
+                            <div class="pipeline-stage">
+                                <span class="stage-name">Proposal Sent</span>
+                                <span class="stage-value">5</span>
+                                <div class="stage-bar" style="width: 10%; background-color: #8D5A97;"></div>
+                            </div>
+                            <div class="pipeline-stage">
+                                <span class="stage-name">Closed Won</span>
+                                <span class="stage-value">3</span>
+                                <div class="stage-bar" style="width: 6%; background-color: #28a745;"></div>
+                            </div>
+                        </div>
+                        <button class="action-btn secondary-btn view-all-btn">View Full Pipeline</button>
+                    </div>
+                </div>
+
+                <div class="card lead-status-summary">
+                    <h2><i class="fas fa-info-circle"></i> Lead Status Summary</h2>
+                    <div class="status-summary-grid">
+                        <div class="status-item">
+                            <span class="status new large-status">New</span>
+                            <span class="status-count">15</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status contacted large-status">Contacted</span>
+                            <span class="status-count">10</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status qualified large-status">Qualified</span>
+                            <span class="status-count">8</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status lost large-status">Lost</span>
+                            <span class="status-count">3</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="leads" class="dashboard-section">
+                <section class="leads-section card">
+                    <h2>Recent Leads</h2>
+                    <input type="text" id="leadSearch" placeholder="Search leads..." class="table-search-input" aria-label="Search leads">
+                    <div class="table-responsive">
+                        <table class="leads-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Source</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leadsTableBody">
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination" id="leadsPagination">
+                        </div>
+                </section>
+            </section>
+
+            <section id="tasks" class="dashboard-section">
+                <section class="kanban-section">
+                    <h2>Task Board</h2>
+                    <div class="kanban-controls">
+                        <input type="text" id="newTaskInput" placeholder="New task title..." aria-label="New task title">
+                        <button id="addTaskBtn" class="action-btn primary-btn">Add Task</button>
+                    </div>
+                    <div class="kanban-board">
+                        <div class="kanban-column" id="column-todo" data-status="todo">
+                            <h3>To Do <span class="task-count">(0)</span></h3>
+                            </div>
+                        <div class="kanban-column" id="column-inprogress" data-status="inprogress">
+                            <h3>In Progress <span class="task-count">(0)</span></h3>
+                            </div>
+                        <div class="kanban-column" id="column-done" data-status="done">
+                            <h3>Done <span class="task-count">(0)</span></h3>
+                            </div>
+                    </div>
+                </section>
+            </section>
+
+            <section id="calendar" class="dashboard-section">
+                <section class="calendar-section card">
+                    <h2>Upcoming Schedule</h2>
+                    <div class="calendar-controls">
+                        <button id="addEventBtn" class="action-btn primary-btn"><i class="fas fa-plus"></i> Add Event</button>
+                    </div>
+                    <div class="calendar-header">
+                        <button id="prevMonthBtn" aria-label="Previous Month">&lt;</button>
+                        <span id="currentMonthYear">July 2025</span>
+                        <button id="nextMonthBtn" aria-label="Next Month">&gt;</button>
+                    </div>
+                    <div class="calendar-grid" id="calendarGrid">
+                        </div>
+                </section>
+            </section>
+
+            <section id="reports" class="dashboard-section">
+                <div class="reports-header card">
+                    <h2><i class="fas fa-chart-pie"></i> Analytics & Reporting Hub</h2>
+                    <p>Gain insights into your CRM data with detailed reports.</p>
+                    <div class="report-filter-options">
+                        <label for="reportDateRange">Date Range:</label>
+                        <select id="reportDateRange" class="filter-select">
+                            <option value="last7days">Last 7 Days</option>
+                            <option value="last30days">Last 30 Days</option>
+                            <option value="thismonth">This Month</option>
+                            <option value="thisquarter">This Quarter</option>
+                            <option value="custom">Custom Range</option>
+                        </select>
+                        <button class="action-btn secondary-btn"><i class="fas fa-download"></i> Export Data</button>
+                    </div>
+                </div>
+
+                <div class="reports-grid">
+                    <div class="card report-card">
+                        <h3><i class="fas fa-chart-bar"></i> Sales Performance</h3>
+                        <p>Track your team's sales volume, revenue, and conversion rates over time.</p>
+                        <ul class="report-metrics">
+                            <li>Total Revenue: <strong>$250K</strong></li>
+                            <li>Deals Closed: <strong>45</strong></li>
+                            <li>Average Deal Size: <strong>$5.5K</strong></li>
+                        </ul>
+                        <button class="action-btn primary-btn report-view-btn">View Detailed Report</button>
+                    </div>
+
+                    <div class="card report-card">
+                        <h3><i class="fas fa-handshake"></i> Lead Source Analysis</h3>
+                        <p>Understand which channels are bringing in the most valuable leads.</p>
+                        <ul class="report-metrics">
+                            <li>Website Leads: <strong>40%</strong></li>
+                            <li>Referral Leads: <strong>30%</strong></li>
+                            <li>Campaign Leads: <strong>20%</strong></li>
+                        </ul>
+                        <button class="action-btn primary-btn report-view-btn">View Detailed Report</button>
+                    </div>
+
+                    <div class="card report-card">
+                        <h3><i class="fas fa-tasks"></i> Activity & Productivity</h3>
+                        <p>Monitor team activities, task completion, and communication logs.</p>
+                        <ul class="report-metrics">
+                            <li>Calls Logged: <strong>120</strong></li>
+                            <li>Emails Sent: <strong>350</strong></li>
+                            <li>Tasks Completed: <strong>85</strong></li>
+                        </ul>
+                        <button class="action-btn primary-btn report-view-btn">View Detailed Report</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="settings" class="dashboard-section">
+                <div class="settings-header card">
+                    <h2><i class="fas fa-cog"></i> System Settings & Preferences</h2>
+                    <p>Manage your profile, notifications, integrations, and team.</p>
+                </div>
+
+                <div class="settings-grid">
+                    <div class="card setting-card">
+                        <h3><i class="fas fa-user-circle"></i> Profile & Account</h3>
+                        <p>Update your personal information, change password, and manage login settings.</p>
+                        <ul class="setting-options">
+                            <li><a href="#"><i class="fas fa-edit"></i> Edit Profile</a></li>
+                            <li><a href="#"><i class="fas fa-key"></i> Change Password</a></li>
+                            <li><a href="#"><i class="fas fa-lock"></i> Two-Factor Authentication</a></li>
+                        </ul>
+                        <button class="action-btn primary-btn setting-manage-btn">Manage</button>
+                    </div>
+
+                    <div class="card setting-card">
+                        <h3><i class="fas fa-bell"></i> Notification Preferences</h3>
+                        <p>Customize email alerts and in-app notifications for various events.</p>
+                        <ul class="setting-options">
+                            <li><i class="fas fa-toggle-on"></i> New Lead Alerts</li>
+                            <li><i class="fas fa-toggle-off"></i> Deal Won Notifications</li>
+                            <li><i class="fas fa-toggle-on"></i> Task Reminders</li>
+                        </ul>
+                        <button class="action-btn primary-btn setting-manage-btn">Manage</button>
+                    </div>
+
+                    <div class="card setting-card">
+                        <h3><i class="fas fa-puzzle-piece"></i> Integrations</h3>
+                        <p>Connect your CRM with other tools like email marketing, accounting, or analytics.</p>
+                        <ul class="setting-options">
+                            <li><i class="fas fa-envelope"></i> Email Marketing Platform</li>
+                            <li><i class="fas fa-chart-line"></i> Analytics Tools</li>
+                            <li><i class="fas fa-cloud"></i> Cloud Storage</li>
+                        </ul>
+                        <button class="action-btn primary-btn setting-manage-btn">Manage</button>
+                    </div>
+
+                    <div class="card setting-card">
+                        <h3><i class="fas fa-users-cog"></i> Team & Users (Admin)</h3>
+                        <p>Add new users, assign roles, and manage permissions for your team members.</p>
+                        <ul class="setting-options">
+                            <li><a href="#"><i class="fas fa-user-plus"></i> Add New User</a></li>
+                            <li><a href="#"><i class="fas fa-user-tag"></i> Manage Roles & Permissions</a></li>
+                            <li><a href="#"><i class="fas fa-user-times"></i> Deactivate Users</a></li>
+                        </ul>
+                        <button class="action-btn primary-btn setting-manage-btn">Manage</button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <div id="mainModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Details</h3>
+                <button class="close-modal-btn" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                </div>
+            <div class="modal-footer" id="modalFooter">
+                </div>
+        </div>
+    </div>
+    <div class="modal-overlay" aria-hidden="true"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
